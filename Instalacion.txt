@@ -1,0 +1,7 @@
+python -m venv env
+pip install flask
+pip install Flask-SQLAlchemy
+pip install psycopg2-binary
+
+https://stackoverflow.com/questions/13370317/sqlalchemy-default-datetime
+https://stackoverflow.com/questions/49657120/using-datetime-utcnow-to-set-default-value-in-flask-sqlalchemy
