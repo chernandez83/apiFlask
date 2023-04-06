@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 def create_app(environment):
     app.config.from_object(environment)
-
+    app.json.ensure_ascii = False
     app.register_blueprint(api_v1)
 
     with app.app_context():

@@ -11,13 +11,23 @@ class Task(db.Model):
     description = db.Column(db.Text, nullable=False)
     deadline = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
-                           default=db.func.current_timestamp()) #server_default=db.func.current_timestamp(),
+                           default=db.func.current_timestamp()) 
+    #server_default=db.func.current_timestamp(),
     #updated_at = db.Column(db.DateTime, nullable=False, 
     #                       server_default=datetime.utcnow,
     #                       onupdate=datetime.utcnow)
     
     def __str__(self):
         return self.title
+    
+    def serialize(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'deadline': self.deadline,
+            'created_at': self.created_at,
+        }
 
 def insert_tasks(*args, **kwargs):
     db.session.add(
