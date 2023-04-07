@@ -1,0 +1,7 @@
+Remove-item alias:curl
+
+curl -i -H "Content-type: application/json" -X POST -d '{\"title\": \"Tarea 3\", \"description\": \"Descripción 3\", \"deadline\": \"2023-04-15 08:12\"}' http://127.0.0.1:5000/api/v1/tasks
+
+curl -i -H "Content-type: application/json" -X POST -d '{\"title\": \"Tarea 4\", \"description\": \"Descripción 4\", \"deadline\": \"2023-05-05 14:19\"}' http://127.0.0.1:5000/api/v1/tasks
+
+curl -i -H "Content-type: application/json" -X POST -d '{\"title\": \"Tarea 3\", \"description\": \"Descripción 3\"}' http://127.0.0.1:5000/api/v1/tasks

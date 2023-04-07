@@ -18,6 +18,7 @@ class TestAPI(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        super(TestAPI, cls).tearDownClass()
         with cls.app.app_context():
             db.session.remove()
             db.drop_all()

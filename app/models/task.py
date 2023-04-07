@@ -17,6 +17,18 @@ class Task(db.Model):
     #                       server_default=datetime.utcnow,
     #                       onupdate=datetime.utcnow)
     
+    @classmethod
+    def new(cls, title, description, deadline):
+        return Task(title=title, description=description, deadline=deadline)
+    
+    def save(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+            return True
+        except:
+            return False
+    
     def __str__(self):
         return self.title
     
