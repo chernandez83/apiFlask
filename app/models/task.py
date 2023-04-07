@@ -1,5 +1,6 @@
 from datetime import datetime
 from sqlalchemy.event import listen
+from sqlalchemy import desc, asc
 
 from . import db
 
@@ -21,9 +22,22 @@ class Task(db.Model):
     def new(cls, title, description, deadline):
         return Task(title=title, description=description, deadline=deadline)
     
+    @classmethod
+    def get_by_page(cls, order, page, per_page=2):
+        sort = desc(Task.id) if order == 'desc' else asc(Task.id)
+        return Task.query.order_by(sort).paginate(page=page, per_page=per_page).items
+    
     def save(self):
         try:
             db.session.add(self)
+            db.session.commit()
+            return True
+        except:
+            return False
+    
+    def delete(self):
+        try:
+            db.session.delete(self)
             db.session.commit()
             return True
         except:
