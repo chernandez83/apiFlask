@@ -46,14 +46,14 @@ class Task(db.Model):
     def __str__(self):
         return self.title
     
-    def serialize(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-            'description': self.description,
-            'deadline': self.deadline,
-            'created_at': self.created_at,
-        }
+    # def serialize(self):
+    #     return {
+    #         'id': self.id,
+    #         'title': self.title,
+    #         'description': self.description,
+    #         'deadline': self.deadline,
+    #         'created_at': self.created_at,
+    #     }
 
 def insert_tasks(*args, **kwargs):
     db.session.add(

@@ -15,10 +15,10 @@ def not_found():
         'code': 404,
     }), 404
 
-def bad_request():
+def bad_request(message = 'Solicitud erronea'):
     return jsonify({
         'success': False,
         'data': {},
-        'message': 'Solicitud erronea',
+        'message': message,
         'code': 400,
     }), 400
